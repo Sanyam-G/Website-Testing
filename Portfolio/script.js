@@ -1,13 +1,6 @@
-// Initialize AOS animations
-AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true,
-});
-
-// Auto-calculate and update age (Birthdate: January 4, 2006)
+// Update Age Based on Birthdate (January 4, 2006)
 function updateAge() {
-    const birthDate = new Date(2006, 0, 4); // Note: Months are 0-indexed
+    const birthDate = new Date(2006, 0, 4);
     const now = new Date();
     let age = now.getFullYear() - birthDate.getFullYear();
     const m = now.getMonth() - birthDate.getMonth();
@@ -18,64 +11,72 @@ function updateAge() {
 }
 updateAge();
 
-// Modal functionality for project details
-function openModal(projectId) {
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalBody = document.getElementById('modalBody');
-    let content = '';
+// Update "Year" Based on College Start (Fall 2023)
+function updateYear() {
+    const startYear = 2023, startMonth = 9;
+    const now = new Date();
+    let diffYears = now.getFullYear() - startYear;
+    if (now.getMonth() + 1 < startMonth) diffYears--;
 
+    let year;
+    if (diffYears < 0) year = "Not yet started";
+    else if (diffYears === 0) year = "Freshman";
+    else if (diffYears === 1) year = "Sophomore";
+    else if (diffYears === 2) year = "Junior";
+    else year = "Senior";
+
+    const standingEl = document.getElementById('standing');
+    if (standingEl) standingEl.textContent = year;
+}
+updateYear();
+
+// Clock Widget – Always show time in Madison, WI (America/Chicago)
+function updateClock() {
+    const clockEl = document.getElementById('clock');
+    const now = new Date();
+    const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'America/Chicago' };
+    clockEl.textContent = now.toLocaleTimeString('en-US', options);
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// Modal Functionality for Project Details
+function openModal(projectId) {
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    let content = '';
     if (projectId === 'project1') {
         content = `
-      <h3 class="text-lg font-bold mb-2">Interactive Graph Visualizer</h3>
-      <p class="text-xs"><strong>Duration:</strong> Sept 2024 – Dec 2024</p>
-      <p class="text-xs mt-1">
-        Crafted a visual tool for graph algorithms (DFS, BFS, Shortest Path) using HTML5 Canvas, achieving 95% test coverage.
+      <h3>Interactive Graph Visualizer</h3>
+      <p><strong>Duration:</strong> Sept 2024 – Dec 2024</p>
+      <p>
+        Developed a tool using HTML5 Canvas to visualize graph algorithms (DFS, BFS, Shortest Path) with 95% test coverage.
       </p>
     `;
     } else if (projectId === 'project2') {
         content = `
-      <h3 class="text-lg font-bold mb-2">SPlanner Mobile App</h3>
-      <p class="text-xs"><strong>Duration:</strong> Mar 2022 – Dec 2023</p>
-      <p class="text-xs mt-1">
-        Developed a Flutter‑based task manager featuring dynamic scheduling and robust Firebase authentication.
+      <h3>SPlanner Mobile App</h3>
+      <p><strong>Duration:</strong> Mar 2022 – Dec 2023</p>
+      <p>
+        Built a Flutter‑based task management application featuring dynamic scheduling and Firebase authentication.
       </p>
     `;
     }
-
     modalBody.innerHTML = content;
-    modalOverlay.classList.remove('hidden');
+    modal.classList.add('active');
 }
-
 function closeModal() {
-    document.getElementById('modalOverlay').classList.add('hidden');
+    document.getElementById('modal').classList.remove('active');
 }
 
-// (Optional) Scroll helper function for navigation
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        window.scrollTo({
-            top: section.offsetTop - 60,
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Create a fun cursor trail effect
+// Sparkling Cursor Effect
 document.addEventListener('mousemove', function(e) {
-    const trail = document.createElement('div');
-    trail.classList.add('cursor-trail');
-    trail.style.left = e.pageX + 'px';
-    trail.style.top = e.pageY + 'px';
-    document.body.appendChild(trail);
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = (e.pageX - 4) + 'px';
+    sparkle.style.top = (e.pageY - 4) + 'px';
+    document.body.appendChild(sparkle);
     setTimeout(() => {
-        trail.remove();
-    }, 800);
-});
-
-// Dummy contact form handler
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thanks for reaching out!');
-    this.reset();
+        sparkle.remove();
+    }, 1000);
 });
