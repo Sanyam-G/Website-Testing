@@ -18,6 +18,7 @@
         <div class="nav-left">
             <h1 class="logo">Sanyam Garg</h1>
         </div>
+        <!-- Note: No "Home" link here because this page is the homepage -->
         <nav class="nav-right">
             <a href="#profile">Profile</a>
             <a href="#about">About Me</a>
@@ -37,7 +38,7 @@
     <!-- Left Column: Profile Info -->
     <div class="left-column" id="profile">
         <div class="card profile-card">
-            <img src="profile-placeholder.jpg" alt="Profile Photo" class="profile-photo">
+            <img src="assets/photo1.png" alt="Profile Photo" class="profile-photo">
             <h2 class="name">Sanyam Garg</h2>
             <p class="info">Age: <span id="age"></span></p>
             <p class="info">Madison, WI</p>
@@ -45,11 +46,6 @@
             <p class="info"><i class="fas fa-phone"></i> +1 (646) 599-7862</p>
             <div id="clock" class="clock"></div>
         </div>
-    </div>
-
-    <!-- Right Column: Stacked Sections -->
-    <div class="right-column">
-        <!-- About Me Section -->
         <section id="about" class="card section-card">
             <h2>About Me</h2>
             <p>
@@ -70,8 +66,10 @@
             </ul>
             <a href="resume.pdf" download class="btn">Download Resume</a>
         </section>
+    </div>
 
-        <!-- Projects Section -->
+    <!-- Right Column: Projects and Experiences -->
+    <div class="right-column">
         <section id="projects" class="card section-card">
             <h2>Projects</h2>
             <div class="project-grid">
@@ -94,25 +92,24 @@
             </div>
         </section>
 
-        <!-- Experiences Section -->
         <section id="experience" class="card section-card">
             <h2>Experiences</h2>
-            <div class="experience-grid">
-                <div class="experience-card">
+            <div class="experience-list">
+                <div class="experience-item">
                     <h3>Cognizant — Agile Simulation</h3>
                     <p><strong>April 2024 – May 2024</strong></p>
                     <p>
                         Demonstrated project management strategies and compared Agile versus Waterfall methodologies.
                     </p>
                 </div>
-                <div class="experience-card">
+                <div class="experience-item">
                     <h3>Skyscanner — SDE Simulation</h3>
                     <p><strong>Nov 2023 – Jan 2024</strong></p>
                     <p>
                         Engineered a travel date picker feature using React integrated with Skyscanner’s Backpack library.
                     </p>
                 </div>
-                <div class="experience-card">
+                <div class="experience-item">
                     <h3>PuStack — SDE Intern</h3>
                     <p><strong>Nov 2021 – Sep 2022</strong></p>
                     <p>

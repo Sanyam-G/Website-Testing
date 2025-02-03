@@ -1,5 +1,5 @@
 :root {
-    --bg-page: #543A14;    /* Brown main as page background */
+    --bg-page: #543A14;    /* Brown main for page background */
     --card-bg: #FFF0DC;    /* Light card background */
     --accent: #F0BB78;     /* Accent color */
     --text-color: #131010; /* Dark text */
@@ -65,7 +65,7 @@ body {
 .main-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 80px; /* to account for navbar */
+    margin-top: 80px; /* account for navbar height */
     padding: 2%;
 }
 .left-column {
@@ -77,7 +77,7 @@ body {
     padding: 1em;
 }
 
-/* Card style for sections */
+/* Card Style */
 .card {
     background: var(--card-bg);
     border: 2px solid var(--accent);
@@ -86,7 +86,7 @@ body {
     margin-bottom: 1.5em;
 }
 
-/* Profile Card (Left Column) */
+/* Profile Card */
 .profile-card {
     text-align: center;
 }
@@ -110,7 +110,7 @@ body {
     font-size: 1.2em;
 }
 
-/* Section Headings for Right Column */
+/* Section Card (for About, Projects, Experiences) */
 .section-card h2 {
     color: var(--accent);
     border-bottom: 2px solid var(--accent);
@@ -139,19 +139,32 @@ body {
     background: #e0a26b;
 }
 
-/* Project & Experience Grids */
-.project-grid, .experience-grid {
+/* Project Grid */
+.project-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
 }
-.project-card, .experience-card {
+.project-card {
     background: var(--card-bg);
     border: 1px solid var(--accent);
     border-radius: 8px;
     padding: 1em;
     flex: 1 1 45%;
     margin-bottom: 1em;
+}
+
+/* Experiences: List layout (each item full width) */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.experience-item {
+    background: var(--card-bg);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 1em;
 }
 
 /* Modal Styles */
